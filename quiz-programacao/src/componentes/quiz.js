@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
-import Pergunta from './pergunta/pergunta';
+//import Pergunta from './pergunta/pergunta';
 
-const Quiz = () => {
-  const [respostas, setRespostas] = useState([]);
-  const [perguntaAtual, setPerguntaAtual] = useState(0);
-  const [tentativa, setTentativa] = useState(1);
-  const [respostaAtual, setRespostaAtual] = useState('');
-
+const Pergunta = () => {
   const perguntas = [
     { id: 1, pergunta: 'Pergunta: O que é um algoritmo?' },
     { id: 2, pergunta: 'Pergunta: O que é uma variável em programação?' },
@@ -93,95 +88,112 @@ const Quiz = () => {
     }
   ];
 
-    const respostasCorretas = [
-        {id: 1, resposta:'Resposta correta: c) Uma sequência de instruções para resolver um problema', opcao: 'c', pontuacao: 10},
-        {id: 2, resposta:'Resposta correta: c) Um local de armazenamento para dados.', opcao: 'c', pontuacao: 10},
-        {id: 3, resposta:'Resposta correta: d) Uma estrutura de controle para repetir um bloco de código.', opcao: 'd', pontuacao: 10},
-        {id: 4, resposta:'Resposta correta: d) Uma estrutura de controle que permite tomar decisões com base em condições.', opcao: 'd', pontuacao: 10},
-        {id: 5, resposta:'Resposta correta: d) Um bloco de código nomeado que executa uma tarefa específica.', opcao: 'd', pontuacao: 10},
-        {id: 6, resposta:'Resposta correta: a) Uma função que chama a si mesma.', opcao: 'a', pontuacao: 10},
-        {id: 7, resposta:'Resposta correta: b) Uma forma de armazenar dados na memória.', opcao: 'b', pontuacao: 10},
-        {id: 8, resposta:'Resposta correta: c) Uma estrutura condicional.', opcao: 'c', pontuacao: 10},
-        {id: 9, resposta:'Resposta correta: c) A quantidade de recursos que um algoritmo consome.', opcao: 'c', pontuacao: 10},
-        {id: 10, resposta:'Resposta correta: c) A execução passo a passo do código para encontrar e corrigir erros.', opcao: 'c', pontuacao: 10}
-    ]
+  const respostas = [
+      {id: 1, resposta:'Resposta correta: c) Uma sequência de instruções para resolver um problema', opcao: 'c', pontuacao: 10},
+      {id: 2, resposta:'Resposta correta: c) Um local de armazenamento para dados.', opcao: 'c', pontuacao: 10},
+      {id: 3, resposta:'Resposta correta: d) Uma estrutura de controle para repetir um bloco de código.', opcao: 'd', pontuacao: 10},
+      {id: 4, resposta:'Resposta correta: d) Uma estrutura de controle que permite tomar decisões com base em condições.', opcao: 'd', pontuacao: 10},
+      {id: 5, resposta:'Resposta correta: d) Um bloco de código nomeado que executa uma tarefa específica.', opcao: 'd', pontuacao: 10},
+      {id: 6, resposta:'Resposta correta: a) Uma função que chama a si mesma.', opcao: 'a', pontuacao: 10},
+      {id: 7, resposta:'Resposta correta: b) Uma forma de armazenar dados na memória.', opcao: 'b', pontuacao: 10},
+      {id: 8, resposta:'Resposta correta: c) Uma estrutura condicional.', opcao: 'c', pontuacao: 10},
+      {id: 9, resposta:'Resposta correta: c) A quantidade de recursos que um algoritmo consome.', opcao: 'c', pontuacao: 10},
+      {id: 10, resposta:'Resposta correta: c) A execução passo a passo do código para encontrar e corrigir erros.', opcao: 'c', pontuacao: 10}
+  ]
 
-    const calcularPontuacaoTotal = () => {
-        let pontuacaoTotal = 0;
-        respostasCorretas.forEach((resposta) => {
-          pontuacaoTotal += resposta.pontuacao;
-        });
-        return pontuacaoTotal;
-      };
-    
-      const limparRespostaAtual = () => {
-        setRespostaAtual('');
-      };
-    
-      const responder = (resposta) => {
-        const respostaCorreta = respostasCorretas[perguntaAtual].resposta;
-        let pontuacao = 0;
-    
-        if (resposta === respostaCorreta) {
-          if (tentativa === 1) {
-            pontuacao += 10;
-            console.log('\nResposta Certa!!\n');
-          } else if (tentativa === 2) {
-            pontuacao = 5;
-          } else {
-            return
-          }
+  const [pontuacaoTotal, setPontuacaoTotal] = useState(0);
+  const [numeroQuestao, setNumeroQuestao] = useState(1);
+  const [acertos, setAcertos] = useState(0);
+  const [erros, setErros] = useState(0);
+  const [resposta, setResposta] = useState('');
+  const [segundaResposta, setSegundaResposta] = useState('');
+  const [mostrarSegundaPergunta, setMostrarSegundaPergunta] = useState(false);
+
+  const handleRespostaChange = (event) => {
+  setResposta(event.target.value);
+  };
+
+  const handleSegundaRespostaChange = (event) => {
+  setSegundaResposta(event.target.value);
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+  
+    if (resposta === respostas[numeroQuestao - 1].opcao) {
+      setPontuacaoTotal(pontuacaoTotal + 10);
+      setAcertos(acertos + 1);
+      setNumeroQuestao(numeroQuestao + 1);
+      setMostrarSegundaPergunta(false);
+    } else {
+      setErros(erros + 1);
+      setMostrarSegundaPergunta(true);
+  
+      waitForSecondAnswer((isCorrect) => {
+        if (isCorrect) {
+          setNumeroQuestao(numeroQuestao + 1);
+          setPontuacaoTotal(pontuacaoTotal + 5);
+          setMostrarSegundaPergunta(false);
         } else {
-          console.log('Resposta incorreta! Tente novamente.');
+          setErros(erros + 1);
+          setMostrarSegundaPergunta(false)
         }
-    
-        const respostaObj = {
-          resposta,
-          pontuacao,
-          respostaCorreta,
-        };
-    
-        setRespostas([...respostas, respostaObj]);
-        limparRespostaAtual();
-    
-        if (resposta === respostaCorreta.opcao) {
-          setTentativa(1);
-          setPerguntaAtual(perguntaAtual + 1);
-          console.log(limparRespostaAtual())
-        } else {
-          setTentativa(tentativa + 1);
-        }
-      };
-    
-      const renderizarPergunta = () => {
-        const pergunta = perguntas[perguntaAtual];
-        const opcoesPergunta = opcoes[perguntaAtual].opcao;
-      
-        return (
-          <Pergunta
-            numero={pergunta.id}
-            pergunta={pergunta.pergunta}
-            opcoes={opcoesPergunta}
-            onResposta={responder}
-            respostaAtual={respostaAtual}
-            onRespostaChange={(event) => setRespostaAtual(event.target.value)}
-          />
-        );
-      };
-      
-      return (
-        <div>
-          {perguntaAtual < perguntas.length ?
-            renderizarPergunta()
-           : (
-            <div>
-              <h2>Quiz finalizado!</h2>
-              <p>Pontuação total: {calcularPontuacaoTotal()}</p>
-              <h3>Respostas corretas: {respostas.filter((resposta) => resposta.pontuacao > 0).length}</h3>
-            </div>
-          )}
-        </div>
-      );
+      });
     }
-    
-    export default Quiz;
+    setResposta('')
+    setSegundaResposta('')
+  };
+  
+  const waitForSecondAnswer = (callback) => {
+    const checkAnswerInterval = setInterval(() => {
+      if (segundaResposta === respostas[numeroQuestao - 1].opcao) {
+        clearInterval(checkAnswerInterval);
+        callback(true);
+        setMostrarSegundaPergunta(false);
+      }
+    }, 100);
+  };
+
+  return (
+  <div>
+    {numeroQuestao <= perguntas.length ? (
+      <form onSubmit={handleFormSubmit}>
+        <h1>Quiz Lógica de Programação e Algoritmo</h1>
+        <h2>Pergunta {numeroQuestao}</h2>
+        <p>{perguntas[numeroQuestao - 1].pergunta}</p>
+        <p>{opcoes[numeroQuestao - 1].opcao}</p>
+        <label htmlFor="resposta">Digite uma opção:</label>
+        <input
+          type="text"
+          id="resposta"
+          value={resposta}
+          onChange={handleRespostaChange}
+        />
+        {mostrarSegundaPergunta && (
+          <>
+            <h3>Tente novamente! Vale 5 pontos.</h3>
+            <p>{perguntas[numeroQuestao - 1].pergunta}</p>
+            <p>{opcoes[numeroQuestao - 1].opcao}</p>
+            <label htmlFor="segundaResposta">Digite uma opção:</label>
+            <input
+              type="text"
+              id="segundaResposta"
+              value={segundaResposta}
+              onChange={handleSegundaRespostaChange}
+            />
+          </>
+        )}
+        <button type="submit">Enviar</button>
+      </form>
+    ) : (
+      <div>
+        <h1>Resultado do Quiz</h1>
+        <p>Pontuação: {pontuacaoTotal}</p>
+        <p>Você acertou: {acertos} vezes e errou: {erros} vezes.</p>
+      </div>
+    )}
+  </div>
+  );
+};
+
+export default Pergunta;

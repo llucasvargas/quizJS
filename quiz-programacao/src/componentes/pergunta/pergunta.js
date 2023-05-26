@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Pergunta = ({ numero, texto, opcao, onResposta }) => {
+const Pergunta = ({ numero, pergunta, opcoes, onResposta, respostaAtual, onRespostaChange }) => {
   return (
     <div>
       <h2>Pergunta {numero}</h2>
-      <p>{texto}</p>
-      <p>{opcao}</p>
-      <input type="text" onChange={(e) => onResposta(e.target.value)} />
+      <p>{pergunta}</p>
+      <p>{opcoes}</p>
+      <input type="text" value={respostaAtual} onChange={handleRespostaChange} />
     </div>
   );
 };
