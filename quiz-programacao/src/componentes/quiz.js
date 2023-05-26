@@ -94,21 +94,21 @@ const Quiz = () => {
   ];
 
     const respostasCorretas = [
-        {id: 1, resposta:'Resposta correta: c) Uma sequência de instruções para resolver um problema', opcao: 'c'},
-        {id: 2, resposta:'Resposta correta: c) Um local de armazenamento para dados.', opcao: 'c'},
-        {id: 3, resposta:'Resposta correta: d) Uma estrutura de controle para repetir um bloco de código.', opcao: 'd'},
-        {id: 4, resposta:'Resposta correta: d) Uma estrutura de controle que permite tomar decisões com base em condições.', opcao: 'd'},
-        {id: 5, resposta:'Resposta correta: d) Um bloco de código nomeado que executa uma tarefa específica.', opcao: 'd'},
-        {id: 6, resposta:'Resposta correta: a) Uma função que chama a si mesma.', opcao: 'a'},
-        {id: 7, resposta:'Resposta correta: b) Uma forma de armazenar dados na memória.', opcao: 'b'},
-        {id: 8, resposta:'Resposta correta: c) Uma estrutura condicional.', opcao: 'c'},
-        {id: 9, resposta:'Resposta correta: c) A quantidade de recursos que um algoritmo consome.', opcao: 'c'},
-        {id: 10, resposta:'Resposta correta: c) A execução passo a passo do código para encontrar e corrigir erros.', opcao: 'c'}
+        {id: 1, resposta:'Resposta correta: c) Uma sequência de instruções para resolver um problema', opcao: 'c', pontuacao: 10},
+        {id: 2, resposta:'Resposta correta: c) Um local de armazenamento para dados.', opcao: 'c', pontuacao: 10},
+        {id: 3, resposta:'Resposta correta: d) Uma estrutura de controle para repetir um bloco de código.', opcao: 'd', pontuacao: 10},
+        {id: 4, resposta:'Resposta correta: d) Uma estrutura de controle que permite tomar decisões com base em condições.', opcao: 'd', pontuacao: 10},
+        {id: 5, resposta:'Resposta correta: d) Um bloco de código nomeado que executa uma tarefa específica.', opcao: 'd', pontuacao: 10},
+        {id: 6, resposta:'Resposta correta: a) Uma função que chama a si mesma.', opcao: 'a', pontuacao: 10},
+        {id: 7, resposta:'Resposta correta: b) Uma forma de armazenar dados na memória.', opcao: 'b', pontuacao: 10},
+        {id: 8, resposta:'Resposta correta: c) Uma estrutura condicional.', opcao: 'c', pontuacao: 10},
+        {id: 9, resposta:'Resposta correta: c) A quantidade de recursos que um algoritmo consome.', opcao: 'c', pontuacao: 10},
+        {id: 10, resposta:'Resposta correta: c) A execução passo a passo do código para encontrar e corrigir erros.', opcao: 'c', pontuacao: 10}
     ]
 
     const calcularPontuacaoTotal = () => {
         let pontuacaoTotal = 0;
-        respostas.forEach((resposta) => {
+        respostasCorretas.forEach((resposta) => {
           pontuacaoTotal += resposta.pontuacao;
         });
         return pontuacaoTotal;
@@ -126,8 +126,10 @@ const Quiz = () => {
           if (tentativa === 1) {
             pontuacao += 10;
             console.log('\nResposta Certa!!\n');
-          } else {
+          } else if (tentativa === 2) {
             pontuacao = 5;
+          } else {
+            return
           }
         } else {
           console.log('Resposta incorreta! Tente novamente.');
@@ -142,9 +144,10 @@ const Quiz = () => {
         setRespostas([...respostas, respostaObj]);
         limparRespostaAtual();
     
-        if (resposta === respostaCorreta || tentativa === 2) {
+        if (resposta === respostaCorreta.opcao) {
           setTentativa(1);
           setPerguntaAtual(perguntaAtual + 1);
+          console.log(limparRespostaAtual())
         } else {
           setTentativa(tentativa + 1);
         }
@@ -168,9 +171,9 @@ const Quiz = () => {
       
       return (
         <div>
-          {perguntaAtual < perguntas.length ? (
+          {perguntaAtual < perguntas.length ?
             renderizarPergunta()
-          ) : (
+           : (
             <div>
               <h2>Quiz finalizado!</h2>
               <p>Pontuação total: {calcularPontuacaoTotal()}</p>
