@@ -17,74 +17,68 @@ const Pergunta = () => {
 
   const opcoes = [
     {
-      id: 1, opcao:
-        `a) Uma linguagem de programação.
-        b) Um tipo de dado.
-        c) Uma sequência de instruções para resolver um problema.
-        d) Um erro no código`
+      id: 1, opcao1:
+        `a) Uma linguagem de programação.`,
+        opcao2: `b) Um tipo de dado.`,
+        opcao3: `c) Uma sequência de instruções para resolver um problema.`,
+        opcao4: `d) Um erro no código`
     },
     {
-      id: 2, opcao:
-        `a) Um resultado de uma expressão matemática.
-        b) Um laço de repetição.
-        c) Um local de armazenamento para dados.
-        d) Uma função pré-definida.`
+      id: 2, opcao1:
+      `a) Um resultado de uma expressão matemática.`,
+      opcao2: `b) Um laço de repetição.`,
+      opcao3: `c) Um local de armazenamento para dados.`,
+      opcao4: `d) Uma função pré-definida.`
     },
     {
-      id: 3, opcao:
-        `a) Uma estrutura condicional.
-        b) Uma função que retorna um valor.
-        c) Um tipo de dado.
-        d) Uma estrutura de controle para repetir um bloco de código.`
+      id: 3, opcao1:
+      `a) Uma estrutura condicional.`,
+      opcao2: `b) Uma função que retorna um valor.`,
+      opcao3: `c) Um tipo de dado.`,
+      opcao4: `d) Uma estrutura de controle para repetir um bloco de código.`
     },
     {
-      id: 4, opcao:
-        `a) Uma forma de declarar uma variável.
-        b) Um tipo de dado numérico.
-        c) Um bloco de código executado várias vezes.
-        d) Uma estrutura de controle que permite tomar decisões com base em condições.`
+      id: 4, opcao1:
+      `a) Uma forma de declarar uma variável.`,
+      opcao2: `b) Um tipo de dado numérico.`,
+      opcao3: `c) Um bloco de código executado várias vezes.`,
+      opcao4: `d) Uma estrutura de controle que permite tomar decisões com base em condições.`
     },
     {
-      id: 5, opcao:
-        `a) Um operador matemático.
-        b) Um tipo de dado.
-        c) Uma estrutura de controle para repetição.
-        d) Um bloco de código nomeado que executa uma tarefa específica.`
+      id: 5, opcao1: `a) Um operador matemático.`,
+      opcao2: `b) Um tipo de dado.`,
+      opcao3: `c) Uma estrutura de controle para repetição.`,
+      opcao4: `d) Um bloco de código nomeado que executa uma tarefa específica.`
     },
     {
-      id: 6, opcao:
-        `a) Uma função que chama a si mesma.
-        b) Um tipo de erro de sintaxe.
-        c) Uma estrutura de controle condicional.
-        d) Uma declaração para sair de um loop.`
+      id: 6, opcao1: `a) Uma função que chama a si mesma.`,
+      opcao2: `b) Um tipo de erro de sintaxe.`,
+      opcao3: `c) Uma forma de depuração de código.`,
+      opcao4: `d) Um operador de atribuição.`
     },
     {
-      id: 7, opcao:
-        `a) Um tipo de dado numérico.
-        b) Uma estrutura para armazenar dados de forma organizada.
-        c) Um operador de comparação.
-        d) Uma função pré-definida.`
+      id: 7, opcao1: `a) Um formato para impressão de resultados.`,
+      opcao2: `b) Uma forma de armazenar dados na memória.`,
+      opcao3: `c) Uma função que retorna um valor booleano.`,
+      opcao4: `d) Uma operação matemática.`
     },
     {
-      id: 8, opcao:
-        `a) Uma estrutura de dados para armazenar múltiplos valores.
-        b) Um operador de comparação.
-        c) Uma declaração para sair de um loop.
-        d) Uma função que retorna um valor.`
+      id: 8, opcao1: `a) Um comentário no código.`,
+      opcao2: `b) Uma forma de dividir o código em blocos.`,
+      opcao3: `c) Uma estrutura condicional.`,
+      opcao4: `d) Uma operação matemática.`
     },
     {
-      id: 9, opcao:
-        `a) A quantidade de memória utilizada por um programa.
-        b) O número de linhas de código em um programa.
-        c) A velocidade de execução de um programa.
-        d) A quantidade de operações executadas por um algoritmo em relação ao tamanho dos dados de entrada.`
+      id: 9, opcao1: `a) O número de linhas de código em um programa.`,
+      opcao2: `b) O tempo necessário para compilar um programa.`,
+      opcao3: `c) A quantidade de recursos que um algoritmo consome.`,
+      opcao4: `d) O número de funções em um programa.`
     },
     {
-      id: 10, opcao:
-        `a) Um processo de otimização de código.
-        b) Um método para verificar a validade de um algoritmo.
-        c) Uma técnica de programação orientada a objetos.
-        d) Um processo de identificar e corrigir erros em um programa.`
+      id: 10, opcao1: `a) A otimização de um algoritmo.`,
+      opcao2: `b) A documentação de um programa.`,
+      opcao3: `c) A execução passo a passo do código para encontrar e corrigir erros.`,
+      opcao4: `d) A análise de resultados de um programa.`
     }
   ];
 
@@ -106,93 +100,105 @@ const Pergunta = () => {
   const [acertos, setAcertos] = useState(0);
   const [erros, setErros] = useState(0);
   const [resposta, setResposta] = useState('');
-  const [segundaResposta, setSegundaResposta] = useState('');
+  //const [segundaResposta, setSegundaResposta] = useState('');
   const [mostrarSegundaPergunta, setMostrarSegundaPergunta] = useState(false);
+  //const [rendimento, setRendimento] = useState('')
 
   const handleRespostaChange = (event) => {
   setResposta(event.target.value);
   };
 
-  const handleSegundaRespostaChange = (event) => {
-  setSegundaResposta(event.target.value);
-  };
+  //const handleSegundaRespostaChange = (event) => {
+  //setSegundaResposta(event.target.value);
+  //};
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-  
+
     if (resposta === respostas[numeroQuestao - 1].opcao) {
       setPontuacaoTotal(pontuacaoTotal + 10);
       setAcertos(acertos + 1);
-      setNumeroQuestao(numeroQuestao + 1);
-      setMostrarSegundaPergunta(false);
     } else {
       setErros(erros + 1);
       setMostrarSegundaPergunta(true);
-  
-      waitForSecondAnswer((isCorrect) => {
-        if (isCorrect) {
-          setNumeroQuestao(numeroQuestao + 1);
-          setPontuacaoTotal(pontuacaoTotal + 5);
-          setMostrarSegundaPergunta(false);
-        } else {
-          setErros(erros + 1);
-          setMostrarSegundaPergunta(false)
-        }
-      });
+      setResposta('');
+      return; // Não continua para a próxima pergunta
     }
-    setResposta('')
-    setSegundaResposta('')
+
+    setNumeroQuestao(numeroQuestao + 1);
+    setMostrarSegundaPergunta(false);
+    setResposta('');
   };
   
-  const waitForSecondAnswer = (callback) => {
-    const checkAnswerInterval = setInterval(() => {
-      if (segundaResposta === respostas[numeroQuestao - 1].opcao) {
-        clearInterval(checkAnswerInterval);
-        callback(true);
-        setMostrarSegundaPergunta(false);
-      }
-    }, 100);
+  const handleSegundaFormSubmit = (event) => {
+    event.preventDefault();
+
+    if (resposta === respostas[numeroQuestao - 1].opcao) {
+      setPontuacaoTotal(pontuacaoTotal + 5);
+      setAcertos(acertos + 1);
+    } else {
+      setErros(erros + 1);
+    }
+
+    setNumeroQuestao(numeroQuestao + 1);
+    setMostrarSegundaPergunta(false);
+    setResposta('');
   };
 
+  //const nota = () => {
+  //  if (pontuacaoTotal === 100) {
+  //    setRendimento('Excelente!')
+  //} else if (pontuacaoTotal >= 75) {
+  //  setRendimento('Otimo!')
+  //} else if (pontuacaoTotal >= 50) {
+  //  setRendimento('Bom!')
+  //} else if (pontuacaoTotal >= 25) {
+  //  setRendimento('Regular!')
+  //} else {
+  //  setRendimento('Pessimo!')
+  //}
+  
+  //}
+
   return (
-  <div>
-    {numeroQuestao <= perguntas.length ? (
-      <form onSubmit={handleFormSubmit}>
-        <h1>Quiz Lógica de Programação e Algoritmo</h1>
-        <h2>Pergunta {numeroQuestao}</h2>
-        <p>{perguntas[numeroQuestao - 1].pergunta}</p>
-        <p>{opcoes[numeroQuestao - 1].opcao}</p>
-        <label htmlFor="resposta">Digite uma opção:</label>
-        <input
-          type="text"
-          id="resposta"
-          value={resposta}
-          onChange={handleRespostaChange}
-        />
-        {mostrarSegundaPergunta && (
-          <>
-            <h3>Tente novamente! Vale 5 pontos.</h3>
-            <p>{perguntas[numeroQuestao - 1].pergunta}</p>
-            <p>{opcoes[numeroQuestao - 1].opcao}</p>
-            <label htmlFor="segundaResposta">Digite uma opção:</label>
-            <input
-              type="text"
-              id="segundaResposta"
-              value={segundaResposta}
-              onChange={handleSegundaRespostaChange}
-            />
-          </>
-        )}
-        <button type="submit">Enviar</button>
-      </form>
-    ) : (
-      <div>
-        <h1>Resultado do Quiz</h1>
-        <p>Pontuação: {pontuacaoTotal}</p>
-        <p>Você acertou: {acertos} vezes e errou: {erros} vezes.</p>
-      </div>
-    )}
-  </div>
+    <div className='container'>
+      {numeroQuestao <= perguntas.length ? (
+        <form onSubmit={mostrarSegundaPergunta ? handleSegundaFormSubmit : handleFormSubmit}>
+          <h1 className='titulo'>Quiz Lógica de Programação e Algoritmo!</h1>
+          <h2 className='subTitulo'>Pergunta {numeroQuestao}</h2>
+          <p className='pergunta'>{perguntas[numeroQuestao - 1].pergunta}</p>
+          <div className='opcoesContainer'>
+            <p className='opcoes'>{opcoes[numeroQuestao - 1].opcao1}</p>
+            <p className='opcoes'>{opcoes[numeroQuestao - 1].opcao2}</p>
+            <p className='opcoes'>{opcoes[numeroQuestao - 1].opcao3}</p>
+            <p className='opcoes'>{opcoes[numeroQuestao - 1].opcao4}</p>
+          </div>
+          <label htmlFor="resposta" className='resposta'>Digite uma opção:</label>
+          <input className='input'
+            type="text"
+            id="resposta"
+            value={resposta}
+            onChange={handleRespostaChange}
+          />
+          {mostrarSegundaPergunta && (
+            <div>
+              <h3 className='subTitulo'>Tente novamente! Vale 5 pontos.</h3>
+              <button className='button' type="submit">Responder</button>
+            </div>
+          )}
+          {!mostrarSegundaPergunta && (
+            <button className='button' type="submit">Responder</button>
+          )}
+        </form>
+      ) : (
+        <div>
+          <h1>Resultado do Quiz</h1>
+          <p>Pontuação Total: {pontuacaoTotal}</p>
+          <p>Acertos: {acertos}</p>
+          <p>Erros: {erros}</p>
+        </div>
+      )}
+    </div>
   );
 };
 
