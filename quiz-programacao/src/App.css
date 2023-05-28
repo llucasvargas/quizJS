@@ -2,6 +2,7 @@ body {
     margin: 0;
     background-color: #8ceff7;
     font-family: 'Courier New', Courier, monospace;
+    max-height: 100vh;
 }
 
 .container {
@@ -69,4 +70,10 @@ body {
     border: none;
     padding: 5px;
     border-radius: 5px;
+}
+
+.button_recarrega::after {
+    background-image: url('../public/images.png');
+    background-repeat: no-repeat;
+    background-position: center;
 }

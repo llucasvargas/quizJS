@@ -160,6 +160,14 @@ const Pergunta = () => {
   
   //}
 
+  const recarregarPagina = () => {
+    window.location.reload();
+  }
+
+  function atualiza() {
+    recarregarPagina()
+  }
+
   return (
     <div className='container'>
       {numeroQuestao <= perguntas.length ? (
@@ -196,6 +204,7 @@ const Pergunta = () => {
           <p>Pontuação Total: {pontuacaoTotal}</p>
           <p>Acertos: {acertos}</p>
           <p>Erros: {erros}</p>
+          <button className='button button_recarrega' onClick={atualiza}>Jogar novamente.</button>
         </div>
       )}
     </div>
