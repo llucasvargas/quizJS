@@ -102,7 +102,7 @@ const Pergunta = () => {
   const [resposta, setResposta] = useState('');
   //const [segundaResposta, setSegundaResposta] = useState('');
   const [mostrarSegundaPergunta, setMostrarSegundaPergunta] = useState(false);
-  //const [rendimento, setRendimento] = useState('')
+//  const [rendimento, setRendimento] = useState('')
 
   const handleRespostaChange = (event) => {
   setResposta(event.target.value);
@@ -146,18 +146,22 @@ const Pergunta = () => {
   };
 
   //const nota = () => {
-  //  if (pontuacaoTotal === 100) {
-  //    setRendimento('Excelente!')
+    //if (pontuacaoTotal === 100) {
+      //setRendimento('Excelente!')
   //} else if (pontuacaoTotal >= 75) {
-  //  setRendimento('Otimo!')
+    //setRendimento('Otimo!')
   //} else if (pontuacaoTotal >= 50) {
-  //  setRendimento('Bom!')
+    //setRendimento('Bom!')
   //} else if (pontuacaoTotal >= 25) {
-  //  setRendimento('Regular!')
+    //setRendimento('Regular!')
   //} else {
-  //  setRendimento('Pessimo!')
+    //setRendimento('Pessimo!')
   //}
   
+  //}
+
+ // function chamarNota() {
+   // nota()
   //}
 
   const recarregarPagina = () => {
