@@ -16,7 +16,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "homepage": "https://llucasvargas.github.io/quizJS/"
+    "homepage": "https://llucasvargas.github.io/quizReact/"
   },
   "eslintConfig": {
     "extends": [
