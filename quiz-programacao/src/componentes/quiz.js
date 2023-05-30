@@ -115,7 +115,7 @@ const Pergunta = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    if (resposta == respostas[numeroQuestao - 1].opcao1 || resposta == respostas[numeroQuestao - 1].opcao2) {
+    if (resposta === respostas[numeroQuestao - 1].opcao1 || resposta === respostas[numeroQuestao - 1].opcao2) {
       setPontuacaoTotal(pontuacaoTotal + 10);
       setAcertos(acertos + 1);
     } else {
@@ -133,7 +133,7 @@ const Pergunta = () => {
   const handleSegundaFormSubmit = (event) => {
     event.preventDefault();
 
-    if (resposta == respostas[numeroQuestao - 1].opcao1 || resposta == respostas[numeroQuestao - 1].opcao2) {
+    if (resposta === respostas[numeroQuestao - 1].opcao1 || resposta === respostas[numeroQuestao - 1].opcao2) {
       setPontuacaoTotal(pontuacaoTotal + 5);
       setAcertos(acertos + 1);
     } else {
