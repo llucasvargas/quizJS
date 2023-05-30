@@ -83,16 +83,16 @@ const Pergunta = () => {
   ];
 
   const respostas = [
-      {id: 1, resposta:'Resposta correta: c) Uma sequência de instruções para resolver um problema', opcao: 'c', pontuacao: 10},
-      {id: 2, resposta:'Resposta correta: c) Um local de armazenamento para dados.', opcao: 'c', pontuacao: 10},
-      {id: 3, resposta:'Resposta correta: d) Uma estrutura de controle para repetir um bloco de código.', opcao: 'd', pontuacao: 10},
-      {id: 4, resposta:'Resposta correta: d) Uma estrutura de controle que permite tomar decisões com base em condições.', opcao: 'd', pontuacao: 10},
-      {id: 5, resposta:'Resposta correta: d) Um bloco de código nomeado que executa uma tarefa específica.', opcao: 'd', pontuacao: 10},
-      {id: 6, resposta:'Resposta correta: a) Uma função que chama a si mesma.', opcao: 'a', pontuacao: 10},
-      {id: 7, resposta:'Resposta correta: b) Uma forma de armazenar dados na memória.', opcao: 'b', pontuacao: 10},
-      {id: 8, resposta:'Resposta correta: c) Uma estrutura condicional.', opcao: 'c', pontuacao: 10},
-      {id: 9, resposta:'Resposta correta: c) A quantidade de recursos que um algoritmo consome.', opcao: 'c', pontuacao: 10},
-      {id: 10, resposta:'Resposta correta: c) A execução passo a passo do código para encontrar e corrigir erros.', opcao: 'c', pontuacao: 10}
+      {id: 1, resposta:'Resposta correta: c) Uma sequência de instruções para resolver um problema', opcao1: 'c', opcao2: 'C', pontuacao: 10},
+      {id: 2, resposta:'Resposta correta: c) Um local de armazenamento para dados.', opcao1: 'c', opcao2: 'C', pontuacao: 10},
+      {id: 3, resposta:'Resposta correta: d) Uma estrutura de controle para repetir um bloco de código.', opcao1: 'd', opcao2: 'D', pontuacao: 10},
+      {id: 4, resposta:'Resposta correta: d) Uma estrutura de controle que permite tomar decisões com base em condições.', opcao1: 'd', opcao2: 'D', pontuacao: 10},
+      {id: 5, resposta:'Resposta correta: d) Um bloco de código nomeado que executa uma tarefa específica.', opcao1: 'd', opcao2: 'D', pontuacao: 10},
+      {id: 6, resposta:'Resposta correta: a) Uma função que chama a si mesma.', opcao1: 'a', opcao2: 'A', pontuacao: 10},
+      {id: 7, resposta:'Resposta correta: b) Uma forma de armazenar dados na memória.', opcao1: 'b', opcao2: 'B', pontuacao: 10},
+      {id: 8, resposta:'Resposta correta: c) Uma estrutura condicional.', opcao1: 'c', opcao2: 'C', pontuacao: 10},
+      {id: 9, resposta:'Resposta correta: c) A quantidade de recursos que um algoritmo consome.',  opcao1: 'c', opcao2: 'C', pontuacao: 10},
+      {id: 10, resposta:'Resposta correta: c) A execução passo a passo do código para encontrar e corrigir erros.', opcao1: 'c', opcao2: 'C', pontuacao: 10}
   ]
 
   const [pontuacaoTotal, setPontuacaoTotal] = useState(0);
@@ -115,7 +115,7 @@ const Pergunta = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    if (resposta == respostas[numeroQuestao - 1].opcao) {
+    if (resposta == respostas[numeroQuestao - 1].opcao1 || resposta == respostas[numeroQuestao - 1].opcao2) {
       setPontuacaoTotal(pontuacaoTotal + 10);
       setAcertos(acertos + 1);
     } else {
@@ -133,7 +133,7 @@ const Pergunta = () => {
   const handleSegundaFormSubmit = (event) => {
     event.preventDefault();
 
-    if (resposta == respostas[numeroQuestao - 1].opcao) {
+    if (resposta == respostas[numeroQuestao - 1].opcao1 || resposta == respostas[numeroQuestao - 1].opcao2) {
       setPontuacaoTotal(pontuacaoTotal + 5);
       setAcertos(acertos + 1);
     } else {
