@@ -115,7 +115,7 @@ const Pergunta = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    if (resposta.toLowerCase() === respostas[numeroQuestao - 1].opcao) {
+    if (resposta == respostas[numeroQuestao - 1].opcao) {
       setPontuacaoTotal(pontuacaoTotal + 10);
       setAcertos(acertos + 1);
     } else {
@@ -133,7 +133,7 @@ const Pergunta = () => {
   const handleSegundaFormSubmit = (event) => {
     event.preventDefault();
 
-    if (resposta.toLowerCase() === respostas[numeroQuestao - 1].opcao) {
+    if (resposta == respostas[numeroQuestao - 1].opcao) {
       setPontuacaoTotal(pontuacaoTotal + 5);
       setAcertos(acertos + 1);
     } else {
@@ -185,7 +185,7 @@ const Pergunta = () => {
           <input className='input'
             type="text"
             id="resposta"
-            value={resposta.toLowerCase()}
+            value={resposta}
             onChange={handleRespostaChange}
           />
           {mostrarSegundaPergunta && (
