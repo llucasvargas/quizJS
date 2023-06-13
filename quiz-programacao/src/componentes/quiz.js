@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-//import Pergunta from './pergunta/pergunta';
 
 const Pergunta = () => {
   const perguntas = [
@@ -83,16 +82,16 @@ const Pergunta = () => {
   ];
 
   const respostas = [
-      {id: 1, resposta:'Resposta correta: c) Uma sequência de instruções para resolver um problema', opcao: 'c', pontuacao: 10},
-      {id: 2, resposta:'Resposta correta: c) Um local de armazenamento para dados.', opcao: 'c', pontuacao: 10},
-      {id: 3, resposta:'Resposta correta: d) Uma estrutura de controle para repetir um bloco de código.', opcao: 'd', pontuacao: 10},
-      {id: 4, resposta:'Resposta correta: d) Uma estrutura de controle que permite tomar decisões com base em condições.', opcao: 'd', pontuacao: 10},
-      {id: 5, resposta:'Resposta correta: d) Um bloco de código nomeado que executa uma tarefa específica.', opcao: 'd', pontuacao: 10},
-      {id: 6, resposta:'Resposta correta: a) Uma função que chama a si mesma.', opcao: 'a', pontuacao: 10},
-      {id: 7, resposta:'Resposta correta: b) Uma forma de armazenar dados na memória.', opcao: 'b', pontuacao: 10},
-      {id: 8, resposta:'Resposta correta: c) Uma estrutura condicional.', opcao: 'c', pontuacao: 10},
-      {id: 9, resposta:'Resposta correta: c) A quantidade de recursos que um algoritmo consome.', opcao: 'c', pontuacao: 10},
-      {id: 10, resposta:'Resposta correta: c) A execução passo a passo do código para encontrar e corrigir erros.', opcao: 'c', pontuacao: 10}
+      {id: 1, resposta:'Resposta correta: c) Uma sequência de instruções para resolver um problema', opcao: 'c'},
+      {id: 2, resposta:'Resposta correta: c) Um local de armazenamento para dados.', opcao: 'c'},
+      {id: 3, resposta:'Resposta correta: d) Uma estrutura de controle para repetir um bloco de código.', opcao: 'd'},
+      {id: 4, resposta:'Resposta correta: d) Uma estrutura de controle que permite tomar decisões com base em condições.', opcao: 'd'},
+      {id: 5, resposta:'Resposta correta: d) Um bloco de código nomeado que executa uma tarefa específica.', opcao: 'd'},
+      {id: 6, resposta:'Resposta correta: a) Uma função que chama a si mesma.', opcao: 'a'},
+      {id: 7, resposta:'Resposta correta: b) Uma forma de armazenar dados na memória.', opcao: 'b'},
+      {id: 8, resposta:'Resposta correta: c) Uma estrutura condicional.', opcao: 'c'},
+      {id: 9, resposta:'Resposta correta: c) A quantidade de recursos que um algoritmo consome.',  opcao: 'c'},
+      {id: 10, resposta:'Resposta correta: c) A execução passo a passo do código para encontrar e corrigir erros.', opcao: 'c'}
   ]
 
   const [pontuacaoTotal, setPontuacaoTotal] = useState(0);
@@ -100,17 +99,12 @@ const Pergunta = () => {
   const [acertos, setAcertos] = useState(0);
   const [erros, setErros] = useState(0);
   const [resposta, setResposta] = useState('');
-  //const [segundaResposta, setSegundaResposta] = useState('');
   const [mostrarSegundaPergunta, setMostrarSegundaPergunta] = useState(false);
   //const [rendimento, setRendimento] = useState('')
 
   const handleRespostaChange = (event) => {
   setResposta(event.target.value);
   };
-
-  //const handleSegundaRespostaChange = (event) => {
-  //setSegundaResposta(event.target.value);
-  //};
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -160,6 +154,10 @@ const Pergunta = () => {
   
   //}
 
+  const encaminharAlternativa = (alternativa) => {
+    setResposta(alternativa)
+  }
+
   const recarregarPagina = () => {
     window.location.reload();
   }
@@ -176,27 +174,31 @@ const Pergunta = () => {
           <h2 className='subTitulo'>Pergunta {numeroQuestao}</h2>
           <p className='pergunta'>{perguntas[numeroQuestao - 1].pergunta}</p>
           <div className='opcoesContainer'>
-            <p className='opcoes'>{opcoes[numeroQuestao - 1].opcao1}</p>
-            <p className='opcoes'>{opcoes[numeroQuestao - 1].opcao2}</p>
-            <p className='opcoes'>{opcoes[numeroQuestao - 1].opcao3}</p>
-            <p className='opcoes'>{opcoes[numeroQuestao - 1].opcao4}</p>
+            <button className='opcoes' onClick={() => encaminharAlternativa('a')} onChange={handleRespostaChange}>
+              {opcoes[numeroQuestao - 1].opcao1}
+            </button>
+            <button className='opcoes' onClick={() => encaminharAlternativa('b')}>
+              {opcoes[numeroQuestao - 1].opcao2}
+            </button>
+            <button className='opcoes' onClick={() => encaminharAlternativa('c')}>
+              {opcoes[numeroQuestao - 1].opcao3}
+            </button>
+            <button className='opcoes' onClick={() => encaminharAlternativa('d')}>
+              {opcoes[numeroQuestao - 1].opcao4}
+            </button>
           </div>
-          <label htmlFor="resposta" className='resposta'>Digite uma opção:</label>
-          <input className='input'
-            type="text"
-            id="resposta"
-            value={resposta}
-            onChange={handleRespostaChange}
-          />
+          <p className='resposta'>Escolha uma opção</p>
+          <div className='pontos'>
+            <p className='acerto'>Acertos: {acertos}</p>
+            <p className='erro'>Erros: {erros}</p>
+            <p>Pontuação Total: {pontuacaoTotal}</p>
+          </div>
           {mostrarSegundaPergunta && (
             <div>
               <h3 className='subTitulo'>Tente novamente! Vale 5 pontos.</h3>
-              <button className='button' type="submit">Responder</button>
             </div>
           )}
-          {!mostrarSegundaPergunta && (
-            <button className='button' type="submit">Responder</button>
-          )}
+          {!mostrarSegundaPergunta}
         </form>
       ) : (
         <div>
