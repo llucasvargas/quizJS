@@ -160,9 +160,9 @@ const Pergunta = () => {
   
   //}
 
- // function chamarNota() {
-   // nota()
-  //}
+  const encaminharAlternativa = (alternativa) => {
+    setResposta(alternativa)
+  }
 
   const recarregarPagina = () => {
     window.location.reload();
@@ -180,27 +180,31 @@ const Pergunta = () => {
           <h2 className='subTitulo'>Pergunta {numeroQuestao}</h2>
           <p className='pergunta'>{perguntas[numeroQuestao - 1].pergunta}</p>
           <div className='opcoesContainer'>
-            <p className='opcoes'>{opcoes[numeroQuestao - 1].opcao1}</p>
-            <p className='opcoes'>{opcoes[numeroQuestao - 1].opcao2}</p>
-            <p className='opcoes'>{opcoes[numeroQuestao - 1].opcao3}</p>
-            <p className='opcoes'>{opcoes[numeroQuestao - 1].opcao4}</p>
+            <button className='opcoes' onClick={() => encaminharAlternativa('a')} onChange={handleRespostaChange}>
+              {opcoes[numeroQuestao - 1].opcao1}
+            </button>
+            <button className='opcoes' onClick={() => encaminharAlternativa('b')}>
+              {opcoes[numeroQuestao - 1].opcao2}
+            </button>
+            <button className='opcoes' onClick={() => encaminharAlternativa('c')}>
+              {opcoes[numeroQuestao - 1].opcao3}
+            </button>
+            <button className='opcoes' onClick={() => encaminharAlternativa('d')}>
+              {opcoes[numeroQuestao - 1].opcao4}
+            </button>
           </div>
-          <label htmlFor="resposta" className='resposta'>Digite uma opção:</label>
-          <input className='input'
-            type="text"
-            id="resposta"
-            value={resposta}
-            onChange={handleRespostaChange}
-          />
+          <p className='resposta'>Escolha uma opção</p>
+          <div className='pontos'>
+            <p className='acerto'>Acertos: {acertos}</p>
+            <p className='erro'>Erros: {erros}</p>
+            <p>Pontuação Total: {pontuacaoTotal}</p>
+          </div>
           {mostrarSegundaPergunta && (
             <div>
               <h3 className='subTitulo'>Tente novamente! Vale 5 pontos.</h3>
-              <button className='button' type="submit">Responder</button>
             </div>
           )}
-          {!mostrarSegundaPergunta && (
-            <button className='button' type="submit">Responder</button>
-          )}
+          {!mostrarSegundaPergunta}
         </form>
       ) : (
         <div>
