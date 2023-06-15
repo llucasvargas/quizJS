@@ -1,7 +1,7 @@
 {
   "name": "quiz-programacao",
   "version": "0.1.0",
-  "homepage": "https://llucasvargas.github.io/quizJS",
+  "homepage": "https://llucasvargas.github.io/quizReact",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

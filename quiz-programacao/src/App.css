@@ -73,12 +73,6 @@ body {
     border-radius: 5px;
 }
 
-.button_recarrega::after {
-    background-image: url('../public/images.png');
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
 .pontos {
     display: flex;
     align-items: center;
