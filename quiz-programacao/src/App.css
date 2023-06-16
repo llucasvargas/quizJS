@@ -2,13 +2,13 @@ body {
     margin: 0;
     background-color: #8ceff7;
     font-family: 'Courier New', Courier, monospace;
-    max-height: 100vh;
+    height: 100%;
 }
 
 .container {
     max-width: 850px;
-    min-width: 400px;
-    margin: 30px auto;
+    height: 100%;
+    margin: auto;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -53,10 +53,19 @@ body {
     font-size: 18px;
 }
 
+.opcoes:hover {
+    color: #000;
+    padding: 20px;
+    margin: 15px 5px;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
 .resposta {
     font-size: 25px;
     color: rgb(44, 152, 179);
     margin-right: 15px;
+    font-weight: bold;
 }
 
 .input {
@@ -70,14 +79,15 @@ body {
 .button {
     background-color: #8ceff7;
     border: none;
-    padding: 5px;
+    padding: 10px;
     border-radius: 5px;
+    font-weight: bold;
 }
 
-.button_recarrega::after {
-    background-image: url('../public/images.png');
-    background-repeat: no-repeat;
-    background-position: center;
+.button:hover {
+    padding: 15px;
+    color: #fff;
+    cursor: pointer;
 }
 
 .pontos {
@@ -91,14 +101,17 @@ body {
     font-size: 20px;
     color: rgb(44, 152, 179);
     margin-right: 15px;
+    font-weight: bold;
 }
 
 .acerto {
     color: rgb(15, 172, 15) !important;
+    font-weight: bold;
 }
 
 .erro {
     color: rgb(207, 24, 24) !important;
+    font-weight: bold;
 }
 
 @media (max-width: 1200px) {
@@ -134,6 +147,7 @@ body {
     .container {
         width: 280px;
         margin: 0 auto;
+        padding: 30px;
     }
     
     .titulo {
@@ -145,6 +159,6 @@ body {
     }
 
     .opcoes {
-        width: 150px;
+        width: 250px;
     }
 }
