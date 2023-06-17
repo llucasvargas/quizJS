@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 
 const Pergunta = () => {
   const perguntas = [
-    { id: 1, pergunta: 'Pergunta: O que é um algoritmo?' },
-    { id: 2, pergunta: 'Pergunta: O que é uma variável em programação?' },
-    { id: 3, pergunta: 'Pergunta: O que é um loop em programação?' },
-    { id: 4, pergunta: 'Pergunta: O que é uma estrutura condicional em programação?' },
-    { id: 5, pergunta: 'Pergunta: O que é uma função em programação?' },
-    { id: 6, pergunta: 'Pergunta: O que é a recursão em programação?' },
-    { id: 7, pergunta: 'Pergunta: O que é uma estrutura de dados em programação?' },
-    { id: 8, pergunta: 'Pergunta: O que é uma declaração de controle de fluxo em programação?' },
-    { id: 9, pergunta: 'Pergunta: O que é a complexidade de um algoritmo?' },
-    { id: 10, pergunta: 'Pergunta: O que é depuração (debugging) em programação?' }
+    { id: 1, pergunta: 'O que é um algoritmo?' },
+    { id: 2, pergunta: 'O que é uma variável em programação?' },
+    { id: 3, pergunta: 'O que é um loop em programação?' },
+    { id: 4, pergunta: 'O que é uma estrutura condicional em programação?' },
+    { id: 5, pergunta: 'O que é uma função em programação?' },
+    { id: 6, pergunta: 'O que é a recursão em programação?' },
+    { id: 7, pergunta: 'O que é uma estrutura de dados em programação?' },
+    { id: 8, pergunta: 'O que é uma declaração de controle de fluxo em programação?' },
+    { id: 9, pergunta: 'O que é a complexidade de um algoritmo?' },
+    { id: 10, pergunta: 'O que é depuração (debugging) em programação?' }
   ];
 
   const opcoes = [
@@ -100,7 +100,8 @@ const Pergunta = () => {
   const [erros, setErros] = useState(0);
   const [resposta, setResposta] = useState('');
   const [mostrarSegundaPergunta, setMostrarSegundaPergunta] = useState(false);
-  //const [rendimento, setRendimento] = useState('')
+//  const [rendimento, setRendimento] = useState('')
+  const aviso = document.querySelector('.resposta')
 
   const handleRespostaChange = (event) => {
   setResposta(event.target.value);
@@ -112,10 +113,12 @@ const Pergunta = () => {
     if (resposta === respostas[numeroQuestao - 1].opcao) {
       setPontuacaoTotal(pontuacaoTotal + 10);
       setAcertos(acertos + 1);
+      aviso.innerHTML = 'Escolha uma opção! Vale 10 pontos'
     } else {
       setErros(erros + 1);
       setMostrarSegundaPergunta(true);
       setResposta('');
+      aviso.innerHTML = 'Tente novamente! Vale 5 pontos.'
       return; // Não continua para a próxima pergunta
     }
 
@@ -130,8 +133,10 @@ const Pergunta = () => {
     if (resposta === respostas[numeroQuestao - 1].opcao) {
       setPontuacaoTotal(pontuacaoTotal + 5);
       setAcertos(acertos + 1);
+      aviso.innerHTML = 'Escolha uma opção! Vale 10 pontos'
     } else {
       setErros(erros + 1);
+      aviso.innerHTML = 'Escolha uma opção! Vale 10 pontos'
     }
 
     setNumeroQuestao(numeroQuestao + 1);
@@ -140,16 +145,16 @@ const Pergunta = () => {
   };
 
   //const nota = () => {
-  //  if (pontuacaoTotal === 100) {
-  //    setRendimento('Excelente!')
+    //if (pontuacaoTotal === 100) {
+      //setRendimento('Excelente!')
   //} else if (pontuacaoTotal >= 75) {
-  //  setRendimento('Otimo!')
+    //setRendimento('Otimo!')
   //} else if (pontuacaoTotal >= 50) {
-  //  setRendimento('Bom!')
+    //setRendimento('Bom!')
   //} else if (pontuacaoTotal >= 25) {
-  //  setRendimento('Regular!')
+    //setRendimento('Regular!')
   //} else {
-  //  setRendimento('Pessimo!')
+    //setRendimento('Pessimo!')
   //}
   
   //}
@@ -174,7 +179,7 @@ const Pergunta = () => {
           <h2 className='subTitulo'>Pergunta {numeroQuestao}</h2>
           <p className='pergunta'>{perguntas[numeroQuestao - 1].pergunta}</p>
           <div className='opcoesContainer'>
-            <button className='opcoes' onClick={() => encaminharAlternativa('a')} onChange={handleRespostaChange}>
+            <button className='opcoes' onClick={() => encaminharAlternativa('a')} >
               {opcoes[numeroQuestao - 1].opcao1}
             </button>
             <button className='opcoes' onClick={() => encaminharAlternativa('b')}>
@@ -187,25 +192,20 @@ const Pergunta = () => {
               {opcoes[numeroQuestao - 1].opcao4}
             </button>
           </div>
-          <p className='resposta'>Escolha uma opção</p>
+          <p className='resposta'>Escolha uma opção! Vale 10 pontos</p>
           <div className='pontos'>
             <p className='acerto'>Acertos: {acertos}</p>
             <p className='erro'>Erros: {erros}</p>
             <p>Pontuação Total: {pontuacaoTotal}</p>
           </div>
-          {mostrarSegundaPergunta && (
-            <div>
-              <h3 className='subTitulo'>Tente novamente! Vale 5 pontos.</h3>
-            </div>
-          )}
           {!mostrarSegundaPergunta}
         </form>
       ) : (
         <div>
-          <h1>Resultado do Quiz</h1>
-          <p>Pontuação Total: {pontuacaoTotal}</p>
-          <p>Acertos: {acertos}</p>
-          <p>Erros: {erros}</p>
+          <h1 className='titulo'>Resultado do Quiz</h1>
+          <p className='resposta'>Pontuação Total: {pontuacaoTotal}</p>
+          <p className='acerto'>Acertos: {acertos}</p>
+          <p className='erro'>Erros: {erros}</p>
           <button className='button button_recarrega' onClick={atualiza}>Jogar novamente.</button>
         </div>
       )}
