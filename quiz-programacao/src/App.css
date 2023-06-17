@@ -8,7 +8,7 @@ body {
 .container {
     max-width: 850px;
     height: 100%;
-    margin: auto;
+    margin: 0 auto;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -22,7 +22,7 @@ body {
 .titulo {
     font-size: 35px;
     color: rgb(226, 74, 74);
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
 .subTitulo {
@@ -197,6 +197,8 @@ body {
     font-size: 25px;
     color: rgb(44, 152, 179);
     margin-bottom: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px;
 }
 
 .opcoesContainer {
@@ -291,6 +293,7 @@ body {
     .container {
         width: 280px;
         margin: 0 auto;
+        padding: 35px;
     }
     
 
@@ -303,6 +306,6 @@ body {
     }
 
     .opcoes {
-        width: 150px;
+        width: 250px;
     }
 }
