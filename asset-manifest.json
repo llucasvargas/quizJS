@@ -1,7 +1,7 @@
 {
   "main.css": "/quizReact/static/css/main.9b20bfeb.chunk.css",
-  "main.js": "/quizReact/static/js/main.fb30a6ee.chunk.js",
-  "main.js.map": "/quizReact/static/js/main.fb30a6ee.chunk.js.map",
+  "main.js": "/quizReact/static/js/main.d436f86f.chunk.js",
+  "main.js.map": "/quizReact/static/js/main.d436f86f.chunk.js.map",
   "static/js/1.3c11774c.chunk.js": "/quizReact/static/js/1.3c11774c.chunk.js",
   "static/js/1.3c11774c.chunk.js.map": "/quizReact/static/js/1.3c11774c.chunk.js.map",
   "static/js/2.2b8e7308.chunk.js": "/quizReact/static/js/2.2b8e7308.chunk.js",
@@ -10,6 +10,6 @@
   "runtime~main.js.map": "/quizReact/static/js/runtime~main.371e7cee.js.map",
   "static/css/main.9b20bfeb.chunk.css.map": "/quizReact/static/css/main.9b20bfeb.chunk.css.map",
   "index.html": "/quizReact/index.html",
-  "precache-manifest.001b137e34858b095ba84a23452c1111.js": "/quizReact/precache-manifest.001b137e34858b095ba84a23452c1111.js",
+  "precache-manifest.bed4c3ccbb11c1d4e4a0fe501f9c42ab.js": "/quizReact/precache-manifest.bed4c3ccbb11c1d4e4a0fe501f9c42ab.js",
   "service-worker.js": "/quizReact/service-worker.js"
 }
