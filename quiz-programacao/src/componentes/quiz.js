@@ -115,7 +115,6 @@ const Pergunta = () => {
       setAcertos(acertos + 1);
       aviso.innerHTML = 'Escolha uma opção! Vale 10 pontos'
     } else {
-      setErros(erros + 1);
       setMostrarSegundaPergunta(true);
       setResposta('');
       aviso.innerHTML = 'Tente novamente! Vale 5 pontos.'
