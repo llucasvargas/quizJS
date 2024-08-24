@@ -100,12 +100,8 @@ const Pergunta = () => {
   const [erros, setErros] = useState(0);
   const [resposta, setResposta] = useState('');
   const [mostrarSegundaPergunta, setMostrarSegundaPergunta] = useState(false);
-//  const [rendimento, setRendimento] = useState('')
+  const [rendimento, setRendimento] = useState('')
   const aviso = document.querySelector('.resposta')
-
-  const handleRespostaChange = (event) => {
-  setResposta(event.target.value);
-  };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -124,6 +120,7 @@ const Pergunta = () => {
     setNumeroQuestao(numeroQuestao + 1);
     setMostrarSegundaPergunta(false);
     setResposta('');
+    nota()
   };
   
   const handleSegundaFormSubmit = (event) => {
@@ -141,22 +138,23 @@ const Pergunta = () => {
     setNumeroQuestao(numeroQuestao + 1);
     setMostrarSegundaPergunta(false);
     setResposta('');
+    nota()
   };
 
-  //const nota = () => {
-    //if (pontuacaoTotal === 100) {
-      //setRendimento('Excelente!')
-  //} else if (pontuacaoTotal >= 75) {
-    //setRendimento('Otimo!')
-  //} else if (pontuacaoTotal >= 50) {
-    //setRendimento('Bom!')
-  //} else if (pontuacaoTotal >= 25) {
-    //setRendimento('Regular!')
-  //} else {
-    //setRendimento('Pessimo!')
-  //}
+  const nota = () => {
+    if (pontuacaoTotal === 100) {
+      setRendimento('Excelente!')
+    } else if (pontuacaoTotal >= 75) {
+      setRendimento('Otimo!')
+    } else if (pontuacaoTotal >= 50) {
+      setRendimento('Bom!')
+    } else if (pontuacaoTotal >= 25) {
+      setRendimento('Regular!')
+    } else {
+      setRendimento('Pessimo!')
+    }
   
-  //}
+  }
 
   const encaminharAlternativa = (alternativa) => {
     setResposta(alternativa)
@@ -203,6 +201,7 @@ const Pergunta = () => {
         <div>
           <h1 className='titulo'>Resultado do Quiz</h1>
           <p className='resposta'>Pontuação Total: {pontuacaoTotal}</p>
+          <p>Rendimento: {rendimento}</p>
           <p className='acerto'>Acertos: {acertos}</p>
           <p className='erro'>Erros: {erros}</p>
           <button className='button button_recarrega' onClick={atualiza}>Jogar novamente.</button>
